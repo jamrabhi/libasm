@@ -6,11 +6,13 @@
 #    By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/06 01:17:01 by jamrabhi          #+#    #+#              #
-#    Updated: 2025/04/02 21:10:56 by jamrabhi         ###   ########.fr        #
+#    Updated: 2025/04/03 19:22:28 by jamrabhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libasm.a
+
+TEST = test
 
 CC = cc
 
@@ -20,43 +22,51 @@ NASM = nasm
 
 NASM_FLAGS = -f elf64
 
-SRC_DIR = src
+SRC_DIR = .
 
-SRC_FILES = hello_world.s
+SRC_FILES = main.c
 
 SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILES))
 
+SRC_ASM_DIR = src
+
+SRC_ASM_FILES = ft_strlen.s ft_strcpy.s
+
+SRC_ASM = $(addprefix $(SRC_ASM_DIR)/,$(SRC_ASM_FILES))
+
 OBJ = $(SRC:.c=.o)
 
-S_OBJ = $(SRC:.s=.o)
+ASM_OBJ = $(SRC_ASM:.s=.o)
 
 MAKEFLAGS += --no-print-directory
 
 all: $(NAME)
 
-$(NAME) : $(S_OBJ)
+$(NAME) : $(ASM_OBJ)
 	@echo "Compiling libasm ..."
-	@ar rcs $(NAME) $(S_OBJ)
-	@echo "DONE\n"
+	@ar rcs $(NAME) $(ASM_OBJ)
+	@echo "DONE"
 
 .c.o:
 	@${CC} ${CFLAGS} -c $< -o $@
 
 .s.o:
-	@$(NASM) $(NASM_FLAGS) $(SRC)
+	@$(NASM) $(NASM_FLAGS) $< -o $@
 
 clean:
 	@echo "Deleting libasm objects files ..."
-	@rm -f $(S_OBJ)
+	@rm -f $(ASM_OBJ) $(OBJ)
 	@echo "DONE"
 
 fclean: clean
 	@echo "Deleting libasm's binary ..."
-	@rm -f $(NAME) test
+	@rm -f $(NAME) $(TEST)
 	@echo "DONE"
 
 re: fclean
 	@make all
 
-test: $(NAME)
-	@$(CC) $(CFLAGS) main.c -L. -lasm -o test
+test: $(NAME) $(OBJ)
+	@echo "Compiling test file ..."
+	@$(CC) $(CFLAGS) $(OBJ) -L. -lasm -o $(TEST)
+	@echo "DONE"
