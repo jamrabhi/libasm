@@ -6,7 +6,7 @@
 #    By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/06 01:17:01 by jamrabhi          #+#    #+#              #
-#    Updated: 2025/04/07 19:00:03 by jamrabhi         ###   ########.fr        #
+#    Updated: 2025/04/08 20:09:11 by jamrabhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILES))
 
 SRC_ASM_DIR = src
 
-SRC_ASM_FILES = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s
+SRC_ASM_FILES = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s
 
 SRC_ASM = $(addprefix $(SRC_ASM_DIR)/,$(SRC_ASM_FILES))
 
