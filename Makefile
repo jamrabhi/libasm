@@ -6,7 +6,7 @@
 #    By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/06 01:17:01 by jamrabhi          #+#    #+#              #
-#    Updated: 2025/04/09 01:41:22 by jamrabhi         ###   ########.fr        #
+#    Updated: 2025/04/09 19:11:12 by jamrabhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ TEST = test
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -no-pie
+CFLAGS = -Wall -Wextra -Werror
 
 NASM = nasm
 

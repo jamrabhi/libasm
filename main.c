@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 19:59:10 by jamrabhi          #+#    #+#             */
-/*   Updated: 2025/04/09 01:56:52 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2025/04/09 19:23:29 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int	main()
 	errno = 0;
 	char *newstr = ft_strdup(hello);
 	printf("ft_strdup errno = %d (%s)\n\n", errno, strerror(errno));
+	printf("newstr = %s", newstr);
 	free(newstr);
 	
 	return (0);
