@@ -6,7 +6,7 @@
 #    By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/06 01:17:01 by jamrabhi          #+#    #+#              #
-#    Updated: 2025/04/08 20:09:11 by jamrabhi         ###   ########.fr        #
+#    Updated: 2025/04/09 01:41:22 by jamrabhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ TEST = test
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -no-pie
 
 NASM = nasm
 
@@ -30,7 +30,8 @@ SRC = $(addprefix $(SRC_DIR)/,$(SRC_FILES))
 
 SRC_ASM_DIR = src
 
-SRC_ASM_FILES = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s
+SRC_ASM_FILES =	ft_strlen.s ft_strcpy.s ft_strcmp.s ft_write.s ft_read.s \
+				ft_strdup.s
 
 SRC_ASM = $(addprefix $(SRC_ASM_DIR)/,$(SRC_ASM_FILES))
 

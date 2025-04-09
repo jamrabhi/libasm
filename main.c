@@ -6,7 +6,7 @@
 /*   By: jamrabhi <jamrabhi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/02 19:59:10 by jamrabhi          #+#    #+#             */
-/*   Updated: 2025/04/08 20:42:11 by jamrabhi         ###   ########.fr       */
+/*   Updated: 2025/04/09 01:56:52 by jamrabhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <stdlib.h>
+
 
 #define BUFFER_SIZE 1024
 
@@ -26,6 +28,7 @@ char	*ft_strcpy(char *dest, const char *src);
 int		ft_strcmp(const char *s1, const char *s2);
 ssize_t	ft_write(int fd, const void *buf, size_t count);
 ssize_t	ft_read(int fd, void *buf, size_t count);
+char	*ft_strdup(const char *s);
 
 int	main()
 {
@@ -69,6 +72,7 @@ int	main()
 	ssize_t bytes_read;
 	// Cas normal : lire depuis stdin
 	printf("Lecture depuis stdin ...\n");
+	errno = 0;
 	bytes_read = ft_read(0, buffer, sizeof(buffer)-1);
 	if (bytes_read >= 0) {
 		buffer[bytes_read] = '\0';  // Terminer la chaîne
@@ -78,7 +82,13 @@ int	main()
 		printf("ft_read failed with errno = %d (%s)\n", errno, strerror(errno));
 	// Cas d'erreur : fd invalide
 	bytes_read = ft_read(-1, buffer, sizeof(buffer)-1);
-	printf("ft_read : %zd bytes read, errno = %d (%s)\n", bytes_read, errno, strerror(errno));
+	printf("ft_read : %zd bytes read, errno = %d (%s)\n\n", bytes_read, errno, strerror(errno));
+
+	printf("TEST FT_STRDUP\n");
+	errno = 0;
+	char *newstr = ft_strdup(hello);
+	printf("ft_strdup errno = %d (%s)\n\n", errno, strerror(errno));
+	free(newstr);
 	
 	return (0);
 }
