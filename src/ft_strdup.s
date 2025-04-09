@@ -12,7 +12,7 @@ ft_strdup:
 	push rdi
 
 	; appel malloc
-	mov rdi, 0
+	mov rdi, rax
 	call malloc
 	test rax, rax
 	jz error			; ZF == 1 donc malloc failed
