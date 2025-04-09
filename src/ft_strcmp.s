@@ -6,8 +6,8 @@ ft_strcmp:
 
 loop:
 	mov al, byte [rdi + rcx]
-	mov bl, byte [rsi + rcx]
-	cmp al, bl
+	mov dl, byte [rsi + rcx]
+	cmp al, dl
 	jne diff
 	cmp al, 0
 	je end
@@ -16,8 +16,8 @@ loop:
 
 diff:
 	movzx eax, al
-	movzx ebx, bl
-	sub eax, ebx
+	movzx edx, dl
+	sub eax, edx
 	ret
 
 end:
